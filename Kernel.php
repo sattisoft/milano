@@ -91,6 +91,8 @@ class Kernel
 
         require_once $paths['milano'] . '/BasePlugin.php';
 
+        require_once $paths['milano'] . '/routingFunctions.php';
+
         if (is_file($paths['vendor'] . '/autoload.php'))
             require_once $paths['vendor'] . '/autoload.php';
 
@@ -127,10 +129,6 @@ class Kernel
                 $config = [];
             }
         }
-
-        /**
-         * gets the rest of the config
-         */
 
         if (!isset($config['params'])){
             if ($configfile = (is_file(Milano::$App->_pathAlias['params']) && substr(Milano::$App->_pathAlias['params'], -4) === 'json') ? Milano::$App->_pathAlias['params']  : ((is_file(Milano::$App->_pathAlias['params'] . '.json')) ? Milano::$App->_pathAlias['params'] . '.json' : ((is_file(Milano::$App->_pathAlias['config'] . '/params.json')) ? Milano::$App->_pathAlias['config'] . '/params.json' : false)) !== FALSE) {
